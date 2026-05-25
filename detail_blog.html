@@ -111,23 +111,23 @@
               <div class="blog-post-info-block">
                 <div class="blog-post-block">
                   <div class="text-size-small">Category:</div>
-                  <div class="text-size-small text-color-alternate w-dyn-bind-empty"></div>
+                  <div id="post-category" class="text-size-small text-color-alternate w-dyn-bind-empty"></div>
                 </div>
                 <div class="blog-post-block">
                   <div class="text-size-small">Reading Time:</div>
-                  <div class="text-size-small text-color-alternate w-dyn-bind-empty"></div>
+                  <div id="post-reading-time" class="text-size-small text-color-alternate w-dyn-bind-empty"></div>
                 </div>
               </div>
               <div class="spacer-medium"></div>
               <div class="post-title-wrapper">
-                <h1 class="blog-post-title w-dyn-bind-empty"></h1>
+                <h1 id="post-title" class="blog-post-title w-dyn-bind-empty"></h1>
               </div>
               <div class="spacer-medium"></div>
               <div class="max-width-medium align-center">
-                <p class="text-size-regular text-align-center w-dyn-bind-empty"></p>
+                <p id="post-summary" class="text-size-regular text-align-center w-dyn-bind-empty"></p>
               </div>
               <div class="spacer-medium"></div>
-              <div class="blog-post-image-wrap"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="cover-image w-dyn-bind-empty"></div>
+              <div class="blog-post-image-wrap"><img id="post-cover" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" alt="" class="cover-image w-dyn-bind-empty"></div>
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@
         <div class="padding-global">
           <div class="container-medium">
             <div class="padding-section-small">
-              <div class="text-rich-text w-dyn-bind-empty w-richtext"></div>
+              <div id="post-content" class="text-rich-text w-dyn-bind-empty w-richtext"></div>
             </div>
             <div class="spacer-huge"></div>
             <div class="dividing-line"></div>
@@ -151,26 +151,27 @@
                 <h2 class="heading-style-h3 text-align-center">Keep Reading</h2>
               </div>
               <div class="spacer-xlarge"></div>
-              <div class="w-dyn-list">
-                <div role="list" class="all-posts-component-grid w-dyn-items">
-                  <div role="listitem" class="w-dyn-item">
-                    <a data-w-id="fa381e98-c8c7-d8a5-1266-f7f288073213" href="#" class="blog-link-wrapper w-inline-block">
-                      <div class="blog-post-wrapper">
-                        <div class="blog-image-wrapper"><img style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="" src="https://d3e54v103j8qbb.cloudfront.net/plugins/Basic/assets/placeholder.60f9b1840c.svg" loading="lazy" class="blog-post-image w-dyn-bind-empty">
-                          <div class="blog-post-category w-dyn-bind-empty"></div>
-                        </div>
-                        <div class="blog-post-content">
-                          <div class="blog-post-info-item">
-                            <div class="text-size-small">Reading Time:</div>
-                            <div class="text-size-small text-color-alternate w-dyn-bind-empty"></div>
-                          </div>
-                          <h2 class="post-title w-dyn-bind-empty"></h2>
-                        </div>
+              <!-- TEMPLATE: original card structure
+              <div role="listitem" class="w-dyn-item">
+                <a data-w-id="fa381e98-c8c7-d8a5-1266-f7f288073213" href="#" class="blog-link-wrapper w-inline-block">
+                  <div class="blog-post-wrapper">
+                    <div class="blog-image-wrapper"><img alt="" src="..." loading="lazy" class="blog-post-image w-dyn-bind-empty">
+                      <div class="blog-post-category w-dyn-bind-empty"></div>
+                    </div>
+                    <div class="blog-post-content">
+                      <div class="blog-post-info-item">
+                        <div class="text-size-small">Reading Time:</div>
+                        <div class="text-size-small text-color-alternate w-dyn-bind-empty"></div>
                       </div>
-                    </a>
+                      <h2 class="post-title w-dyn-bind-empty"></h2>
+                    </div>
                   </div>
-                </div>
-                <div class="empty-state w-dyn-empty">
+                </a>
+              </div>
+              -->
+              <div class="w-dyn-list">
+                <div id="blog-other-list" role="list" class="all-posts-component-grid w-dyn-items"></div>
+                <div id="blog-other-empty" class="empty-state w-dyn-empty" style="display:none;">
                   <div>No items found.</div>
                 </div>
               </div>
@@ -310,5 +311,185 @@
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=692486a3b16e64066a3738b0" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script>
+    (function () {
+      var REPO = 'georgesbaradehi/portfolio';
+      var BRANCH = 'main';
+      var DIR = '_posts/blog';
+      var LIST_URL = 'https://api.github.com/repos/' + REPO + '/contents/' + DIR + '?ref=' + BRANCH;
+      var RAW_BASE = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/' + DIR + '/';
+
+      function escapeHtml(s) {
+        return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+        });
+      }
+
+      function parseFrontmatter(text) {
+        var m = text.match(/^---\s*\r?\n([\s\S]+?)\r?\n---\s*\r?\n?([\s\S]*)$/);
+        if (!m) return { data: {}, body: text };
+        var data = {};
+        m[1].split(/\r?\n/).forEach(function (line) {
+          var kv = line.match(/^([A-Za-z0-9_-]+)\s*:\s*(.*)$/);
+          if (!kv) return;
+          var v = kv[2].trim();
+          if ((v.charAt(0) === '"' && v.charAt(v.length - 1) === '"') ||
+              (v.charAt(0) === "'" && v.charAt(v.length - 1) === "'")) {
+            v = v.slice(1, -1);
+          }
+          data[kv[1]] = v;
+        });
+        return { data: data, body: m[2] };
+      }
+
+      function estimateReadingTime(body) {
+        var words = (body || '').trim().split(/\s+/).filter(Boolean).length;
+        var minutes = Math.max(1, Math.round(words / 200));
+        return minutes + ' min';
+      }
+
+      function getSlug() {
+        var params = new URLSearchParams(window.location.search);
+        return params.get('slug');
+      }
+
+      function setText(id, value) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        if (value) {
+          el.textContent = value;
+          el.classList.remove('w-dyn-bind-empty');
+        } else {
+          el.textContent = '';
+        }
+      }
+
+      function setImage(id, src, alt) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        if (src) {
+          el.src = src;
+          el.alt = alt || '';
+          el.classList.remove('w-dyn-bind-empty');
+        }
+      }
+
+      function setHtml(id, html) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        if (html) {
+          el.innerHTML = html;
+          el.classList.remove('w-dyn-bind-empty');
+        }
+      }
+
+      function renderOtherCard(p) {
+        var href = 'detail_blog.html?slug=' + encodeURIComponent(p.slug);
+        var imgHtml = p.image
+          ? '<img alt="' + escapeHtml(p.title) + '" src="' + escapeHtml(p.image) + '" loading="lazy" class="blog-post-image">'
+          : '';
+        var categoryHtml = p.category
+          ? '<div class="blog-post-category">' + escapeHtml(p.category) + '</div>'
+          : '';
+        return ''
+          + '<div role="listitem" class="w-dyn-item">'
+          +   '<a href="' + href + '" class="blog-link-wrapper w-inline-block">'
+          +     '<div class="blog-post-wrapper">'
+          +       '<div class="blog-image-wrapper">' + imgHtml + categoryHtml + '</div>'
+          +       '<div class="blog-post-content">'
+          +         '<div class="blog-post-info-item">'
+          +           '<div class="text-size-small">Reading Time:</div>'
+          +           '<div class="text-size-small text-color-alternate">' + escapeHtml(p.readingTime) + '</div>'
+          +         '</div>'
+          +         '<h2 class="post-title">' + escapeHtml(p.title) + '</h2>'
+          +       '</div>'
+          +     '</div>'
+          +   '</a>'
+          + '</div>';
+      }
+
+      function shuffle(arr) {
+        for (var i = arr.length - 1; i > 0; i--) {
+          var j = Math.floor(Math.random() * (i + 1));
+          var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+        }
+        return arr;
+      }
+
+      var slug = getSlug();
+      if (!slug) {
+        window.location.replace('blog.html');
+        return;
+      }
+
+      fetch(RAW_BASE + encodeURIComponent(slug) + '.md')
+        .then(function (r) {
+          if (!r.ok) throw new Error('Post not found: ' + slug);
+          return r.text();
+        })
+        .then(function (md) {
+          var fm = parseFrontmatter(md);
+          var data = fm.data;
+          var body = fm.body;
+          var readingTime = data.readingTime || estimateReadingTime(body);
+
+          if (data.title) document.title = data.title + ' | Pixel Thoughts';
+
+          setText('post-category', data.category || '');
+          setText('post-reading-time', readingTime);
+          setText('post-title', data.title || slug);
+          setText('post-summary', data.summary || '');
+          if (data.image) setImage('post-cover', data.image, data.title || '');
+          if (typeof marked !== 'undefined' && marked.parse) {
+            setHtml('post-content', marked.parse(body || ''));
+          } else {
+            setHtml('post-content', '<pre>' + escapeHtml(body) + '</pre>');
+          }
+        })
+        .catch(function (err) {
+          console.error(err);
+          setText('post-title', 'Post not found');
+          setHtml('post-content', '<p>The requested post could not be loaded. <a href="blog.html">Back to blog</a></p>');
+        });
+
+      var otherList = document.getElementById('blog-other-list');
+      var otherEmpty = document.getElementById('blog-other-empty');
+      if (otherList) {
+        fetch(LIST_URL)
+          .then(function (r) { if (!r.ok) throw new Error('GitHub API: ' + r.status); return r.json(); })
+          .then(function (files) {
+            files = (files || []).filter(function (f) {
+              return f.type === 'file' && /\.md$/i.test(f.name) && f.name.replace(/\.md$/i, '') !== slug;
+            });
+            return Promise.all(files.map(function (f) {
+              return fetch(f.download_url).then(function (r) { return r.text(); }).then(function (md) {
+                var fm = parseFrontmatter(md);
+                return {
+                  slug: f.name.replace(/\.md$/i, ''),
+                  title: fm.data.title || f.name.replace(/\.md$/i, ''),
+                  date: fm.data.date || '',
+                  image: fm.data.image || '',
+                  category: fm.data.category || '',
+                  readingTime: fm.data.readingTime || estimateReadingTime(fm.body)
+                };
+              });
+            }));
+          })
+          .then(function (posts) {
+            var picked = shuffle(posts).slice(0, 3);
+            if (!picked.length) {
+              if (otherEmpty) otherEmpty.style.display = '';
+              return;
+            }
+            otherList.innerHTML = picked.map(renderOtherCard).join('');
+          })
+          .catch(function (err) {
+            console.error('Failed to load other posts:', err);
+            if (otherEmpty) otherEmpty.style.display = '';
+          });
+      }
+    })();
+  </script>
 </body>
 </html>
