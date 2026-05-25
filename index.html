@@ -79,6 +79,7 @@
 </script>
   <script src="https://pub-b70a87775b8141988691a09280bab1a8.r2.dev/snippets/4c0796ec-ff38-40d5-a81b-bbdcaa80ea53.js"></script>
   <script src="https://cdn.prod.website-files.com/692486a3b16e64066a3738b0%2F66ba5a08efe71070f98dd10a%2F698fbd23bcf836c1abf7ed8d%2Fdm6rskj5z5-1.1.1.js" type="text/javascript"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
   <div fs-cc="banner" class="consent-wrapper">
@@ -656,5 +657,16 @@
         });
     })();
   </script>
+   <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
 </body>
 </html>
